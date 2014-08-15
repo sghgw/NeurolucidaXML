@@ -4,13 +4,18 @@ class NeurolucidaXML
   load: (xml) ->
     throw new Error('No XML found') if !xml
     # load XML via DOMParser
-    @xml = $($.parseXML(xml))
-    # load tree-nodes with type="Dendrite"
-    @loadDendrites @xml.find('tree[type=Dendrite]')
+    if @xml = $($.parseXML(xml))
+      # load tree-nodes with type="Dendrite"
+      @loadDendrites @xml.find('tree[type=Dendrite]')
 
-    # TODO: load tree-nodes with type="Axon"
-    # TODO: load cell bodies
-
+      # TODO: load tree-nodes with type="Axon"
+      # TODO: load cell bodies
+      {
+        dendrites: @dendrites
+        # TODO: Add Axons and Cell bodies
+      }
+    else
+      throw new Error('Incorrect XML: ' + xml)
 
   # load dendrite data from a collection of tree[type=Dendrite] tags
   loadDendrites: (tags) ->
@@ -21,7 +26,6 @@ class NeurolucidaXML
   loadDendrite: (tag) ->
     # create basic template for dendrite object
     dendrite = {
-      segments: []
       spines: []
       length: 0
       total_spines: 0
@@ -34,8 +38,8 @@ class NeurolucidaXML
 
     # loop through all point tags and create a segment of dendrite between this point and the next one
     for point in tag.children('point')
-      next = $(point).next('point')
-      if next
+      next = $(point).nextAll('point').first()
+      if next.length > 0
         segment = new Segment(@_getCoordinates($(point)), @_getCoordinates(next)) 
         dendrite.length += segment.getLength()
 
