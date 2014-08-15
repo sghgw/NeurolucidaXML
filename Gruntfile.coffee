@@ -5,11 +5,13 @@ module.exports = (grunt) ->
         files:
           'lib/neurolucida-xml.js': ['src/*.coffee']
     mochaTest:
+      options:
+        reporter: 'spec'
       src: ['test/xmlTest.coffee', 'test/segmentTest.coffee']
     watch: 
       coffee:
-        files: ['src/*.coffee']
-        tasks: ['coffee', 'uglify:js', 'mochaTest']
+        files: ['src/*.coffee', 'test/*.coffee']
+        tasks: ['coffee', 'uglify:js']
     uglify:
       js:
         files:
@@ -19,4 +21,4 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-watch'
   grunt.loadNpmTasks 'grunt-contrib-uglify'
 
-  grunt.registerTask 'default', ['coffee', 'uglify:js', 'mochaTest']
+  grunt.registerTask 'default', ['coffee', 'uglify:js']
