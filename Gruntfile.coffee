@@ -9,10 +9,14 @@ module.exports = (grunt) ->
     watch: 
       coffee:
         files: ['src/*.coffee']
-        tasks: ['coffee', 'mochaTest']
+        tasks: ['coffee', 'uglify:js', 'mochaTest']
+    uglify:
+      js:
+        files:
+          'lib/neuroludcida-xml.min.js': ['lib/neurolucida-xml.js']
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-mocha-test'
-  grunt.loadNpmTasks('grunt-contrib-watch')
+  grunt.loadNpmTasks 'grunt-contrib-watch'
+  grunt.loadNpmTasks 'grunt-contrib-uglify'
 
-
-  grunt.registerTask 'default', ['coffee', 'mochaTest']
+  grunt.registerTask 'default', ['coffee', 'uglify:js', 'mochaTest']
