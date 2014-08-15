@@ -22,6 +22,9 @@ class Segment
     m = Math.sqrt(Math.pow((r1 - r2), 2) + Math.pow(@getLength(), 2))
     (r1 + r2) * m * Math.PI
 
+  getDiameter: ->
+    (@startPoint[3] + @endPoint[3]) / 2
+
   distanceToPoint: (point) ->
     r = [point[0] - @startPoint[0], point[1] - @startPoint[1], point[2] - @startPoint[2]]
     d1 = [
