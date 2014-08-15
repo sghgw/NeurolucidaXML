@@ -10,6 +10,12 @@ class Segment
     z = Math.pow (@endPoint[2] - @startPoint[2]), 2
     Math.sqrt(x + y + z)
 
+  getVolume: ->
+    r1 = Math.pow (@startPoint[3] / 2), 2
+    r2 = Math.pow (@endPoint[3] / 2), 2 
+    r3 = (@startPoint[3] * @endPoint[3]) / 4
+    ((Math.PI * @getLength()) / 3) * (r1 + r2 + r3)
+
   distanceToPoint: (point) ->
     r = [point[0] - @startPoint[0], point[1] - @startPoint[1], point[2] - @startPoint[2]]
     d1 = [
