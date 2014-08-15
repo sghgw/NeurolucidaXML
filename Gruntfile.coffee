@@ -4,5 +4,10 @@ module.exports = (grunt) ->
       compile:
         files:
           'lib/neurolucida-xml.js': ['src/*.coffee']
+    mochaTest:
+      src: ['test/xmlTest.coffee', 'test/segmentTest.coffee']
   grunt.loadNpmTasks 'grunt-contrib-coffee'
-  grunt.registerTask 'default', ['coffee']
+  grunt.loadNpmTasks 'grunt-mocha-test'
+
+
+  grunt.registerTask 'default', ['coffee', 'mochaTest']
