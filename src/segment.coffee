@@ -16,6 +16,12 @@ class Segment
     r3 = (@startPoint[3] * @endPoint[3]) / 4
     ((Math.PI * @getLength()) / 3) * (r1 + r2 + r3)
 
+  getSurface: ->
+    r1 = @startPoint[3] / 2
+    r2 = @endPoint[3] / 2
+    m = Math.sqrt(Math.pow((r1 - r2), 2) + Math.pow(@getLength(), 2))
+    (r1 + r2) * m * Math.PI
+
   distanceToPoint: (point) ->
     r = [point[0] - @startPoint[0], point[1] - @startPoint[1], point[2] - @startPoint[2]]
     d1 = [
