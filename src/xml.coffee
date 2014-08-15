@@ -43,6 +43,7 @@ class NeurolucidaXML
         segment = new Segment(@_getCoordinates($(point)), @_getCoordinates(next)) 
         dendrite.length += segment.getLength()
         dendrite.volume += segment.getVolume()
+        dendrite.surface += segment.getSurface()
 
     # loop through all spine tags
     for spine in tag.children 'spine'
