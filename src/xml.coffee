@@ -31,6 +31,7 @@ class NeurolucidaXML
       total_spines: 0
       surface: 0
       volume: 0
+      diameter: 0
       group: ''
       file: ''
       title: ''
@@ -44,6 +45,10 @@ class NeurolucidaXML
         dendrite.length += segment.getLength()
         dendrite.volume += segment.getVolume()
         dendrite.surface += segment.getSurface()
+        dendrite.diameter += segment.getDiameter()
+
+
+    dendrite.diameter /= (tag.children('point').length - 1)
 
     # loop through all spine tags
     for spine in tag.children 'spine'
@@ -52,6 +57,7 @@ class NeurolucidaXML
       spine = new Segment(start, end)
       dendrite.spines.push {
         length: spine.getLength()
+
       }
       dendrite.total_spines++
 
