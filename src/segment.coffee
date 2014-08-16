@@ -43,8 +43,3 @@ class Segment
         Math.pow(@direction[2], 2)
       )
     d1/d2
-
-
-    
-root = exports ? window
-root.Segment = Segment
