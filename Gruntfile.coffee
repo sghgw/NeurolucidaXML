@@ -1,6 +1,8 @@
 module.exports = (grunt) ->
   grunt.initConfig
     coffee:
+      options:
+        join: true
       compile:
         files:
           'lib/neurolucida-xml.js': ['src/*.coffee']
