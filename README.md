@@ -16,6 +16,6 @@ NeurolucidaXML = require './lib/neurolucida-xml.js'
 # Or use minified version
 NeurolucidaXML = require './lib/neurolucida-xml.min.js'
 ```
-All examples will be written in (CoffeeScript)[http://coffeescript.org/].
+All examples will be written in [CoffeeScript](http://coffeescript.org/).
 
 Installation via npm is coming soon.
