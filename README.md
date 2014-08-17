@@ -11,11 +11,16 @@ For now, just install it manually:
 <script src="lib/neurolucida-xml.min.js"></script>
 ```
 or for use with node:
-```CoffeeScript
-NeurolucidaXML = (require './lib/neurolucida-xml.js').NeurolucidaXML
-# Or use minified version
-NeurolucidaXML = (require './lib/neurolucida-xml.min.js').NeurolucidaXML
+```JavaScript
+var NeurolucidaXML = require('./lib/neurolucida-xml.js').NeurolucidaXML;
+// Or use minified version
+var NeurolucidaXML = require('./lib/neurolucida-xml.min.js').NeurolucidaXML;
 ```
-All examples will be written in [CoffeeScript](http://coffeescript.org/).
+or in [CoffeeScript](http://coffeescript.org/):
+```CoffeeScript
+{NeurolucidaXML} = require './lib/neurolucida-xml.js'
+# Or use minified version
+{NeurolucidaXML} = require './lib/neurolucida-xml.min.js'
+```
 
 Installation via npm is coming soon.
