@@ -7,22 +7,18 @@ Install it with npm:
 ```
 $ npm install neurolucida-xml
 ```
+and use it with node:
+```JavaScript
+var NeurolucidaXML = require('neurolucida-xml').NeurolucidaXML;
+```
+or in [CoffeeScript](http://coffeescript.org/):
+```CoffeeScript
+{NeurolucidaXML} = require 'neurolucida-xml'
+```
 
 If you want to install it manually:
 ```HTML
 <script src="lib/neurolucida-xml.js"></script>
 <!-- Or use minified version -->
 <script src="lib/neurolucida-xml.min.js"></script>
-```
-or for use with node:
-```JavaScript
-var NeurolucidaXML = require('./lib/neurolucida-xml.js').NeurolucidaXML;
-// Or use minified version
-var NeurolucidaXML = require('./lib/neurolucida-xml.min.js').NeurolucidaXML;
-```
-or in [CoffeeScript](http://coffeescript.org/):
-```CoffeeScript
-{NeurolucidaXML} = require './lib/neurolucida-xml.js'
-# Or use minified version
-{NeurolucidaXML} = require './lib/neurolucida-xml.min.js'
 ```
