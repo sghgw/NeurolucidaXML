@@ -1,15 +1,13 @@
 {
   "name": "NeurolucidaXML",
   "version": "0.0.1",
-  "description": "",
+  "description": "NeurolucidaXML will be a JavaScript library to parse data from Neurolucida XML files. I just start with this project, so it is far away from being complete.",
   "keywords": [],
   "homepage": "https://github.com/sghgw/NeurolucidaXML",
-  "bugs": "https://github.com/sghgw/NeurolucidaXML/issues",
-  "author": {
-    "name": "",
-    "email": "",
-    "url": "https://github.com/sghgw"
+  "bugs": {
+    "url": "https://github.com/sghgw/NeurolucidaXML/issues"
   },
+  "author": "Sascha G (https://github.com/sghgw)",
   "repository": {
     "type": "git",
     "url": "git://github.com/sghgw/NeurolucidaXML.git"
@@ -27,5 +25,13 @@
   },
   "engines": {
     "node": ">=0.8.0"
-  }
+  },
+  "main": "lib/neurolucida-xml.min.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "grunt"
+  },
+  "license": "GNU General Public License"
 }
