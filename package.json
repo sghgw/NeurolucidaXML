@@ -1,6 +1,6 @@
 {
   "name": "neurolucida-xml",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "NeurolucidaXML will be a JavaScript library to parse data from Neurolucida XML files. I just start with this project, so it is far away from being complete.",
   "keywords": [],
   "homepage": "https://github.com/sghgw/NeurolucidaXML",
