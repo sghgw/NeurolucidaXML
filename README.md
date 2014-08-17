@@ -22,3 +22,20 @@ If you want to install it manually:
 <!-- Or use minified version -->
 <script src="lib/neurolucida-xml.min.js"></script>
 ```
+
+## Usage
+JavaScript:
+```JavaScript
+// Initialize new instance of NeurolucidaXML parser
+var parser = new NeurolucidaXML;
+
+// Load XML string
+var xmlString = '<mbf>...</mbf>';
+parser.load(xmlString);
+```
+
+## Copyright and License
+Copyright (c) 2014  Sascha Grothe
+
+NeurolucidaXML is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License.
+NeurolucidaXML is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the [GNU General Public License](http://www.gnu.org/licenses/) for more details.
