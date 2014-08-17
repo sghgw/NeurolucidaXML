@@ -1,6 +1,6 @@
 class NeurolucidaXML
   constructor: ->
-    @dendrites = []
+    @_dendrites = []
   load: (xml) ->
     throw new Error('No XML found') if !xml
     # load XML via DOMParser
@@ -10,10 +10,7 @@ class NeurolucidaXML
 
       # TODO: load tree-nodes with type="Axon"
       # TODO: load cell bodies
-      {
-        dendrites: @dendrites
-        # TODO: Add Axons and Cell bodies
-      }
+      true
     else
       throw new Error('Incorrect XML: ' + xml)
 
@@ -61,7 +58,10 @@ class NeurolucidaXML
       }
       dendrite.total_spines++
 
-    @dendrites.push dendrite
+    @_dendrites.push dendrite
+
+  getDendrites: ->
+    @_dendrites
 
   # return x, y, z, d of point tag as array
   _getCoordinates: (point) ->
