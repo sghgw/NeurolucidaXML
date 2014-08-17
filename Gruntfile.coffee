@@ -17,7 +17,7 @@ module.exports = (grunt) ->
     uglify:
       js:
         files:
-          'lib/neuroludcida-xml.min.js': ['lib/neurolucida-xml.js']
+          'lib/neurolucida-xml.min.js': ['lib/neurolucida-xml.js']
   grunt.loadNpmTasks 'grunt-contrib-coffee'
   grunt.loadNpmTasks 'grunt-mocha-test'
   grunt.loadNpmTasks 'grunt-contrib-watch'
