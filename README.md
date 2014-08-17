@@ -3,8 +3,12 @@
 NeurolucidaXML will be a JavaScript library to parse data from Neurolucida XML files. I just start with this project, so it is far away from being complete.
 
 ## Installation
+Install it with npm:
+```
+$ npm install neurolucida-xml
+```
 
-For now, just install it manually:
+If you want to install it manually:
 ```HTML
 <script src="lib/neurolucida-xml.js"></script>
 <!-- Or use minified version -->
@@ -22,5 +26,3 @@ or in [CoffeeScript](http://coffeescript.org/):
 # Or use minified version
 {NeurolucidaXML} = require './lib/neurolucida-xml.min.js'
 ```
-
-Installation via npm is coming soon.
