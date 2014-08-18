@@ -41,20 +41,20 @@ parser.getDendrites();
 NeuroluciaXML extracts data of dendrites and spines. Axons and cell bodies data is coming soon.
 
 `parser.getDendrites()` will return an array of dendrite objects. The dendrite object looks like this:
-```
+```JavaScript
 {
-	name: 						'name',
-	diameter:				0.76, 		// in µm	
-	length: 					12.7,		// in µm
-	surface: 				12.756,	// in µm²
-	volume:					1.022,		// in µm³
-	total_spines:		26,			// number of spines
-	spine_density:		2.04,		// in 1/µm
+	name:           'name',
+	diameter:       0.76, 		// in µm	
+	length:         12.7,		// in µm
+	surface:        12.756,	// in µm²
+	volume:         1.022,		// in µm³
+	total_spines:   26,			// number of spines
+	spine_density:	  2.04,		// in 1/µm
 	spine_means: {
-		length: 				1.34,		// in µm
-		diameter:			0.32			// in µm
+		length:       1.34,		// in µm
+		diameter:     0.32			// in µm
 	},
-	spines: [{spineObject}, ... , {spineObject}]
+	spines:         [{spineObject}, ... , {spineObject}]
 }
 ```
 
