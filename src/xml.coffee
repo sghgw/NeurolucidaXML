@@ -11,22 +11,20 @@ class NeurolucidaXML
       parser = new DOMParser()
       @xml = parser.parseFromString xml, 'text/xml'
     
-    if @xml then true else throw new Error('Incorrect XML: ' + xml)
-    # load XML via DOMParser
-    # if @xml = $($.parseXML(xml))
-    #   # load tree-nodes with type="Dendrite"
-    #   @loadDendrites @xml.find('tree[type=Dendrite]')
+    if @xml
+      @loadTree()
+      # TODO: load cell bodies
 
-    #   # TODO: load tree-nodes with type="Axon"
-    #   # TODO: load cell bodies
-    #   true
-    # else
-    #   throw new Error('Incorrect XML: ' + xml)
+      true 
+    else
+      throw new Error('Incorrect XML: ' + xml)
 
   # load dendrite data from a collection of tree[type=Dendrite] tags
-  loadDendrites: (tags) ->
-    for tag in tags
-      @loadDendrite $(tag)
+  loadTree: ->
+    for tree in @xml.getElementsByTagName('tree')
+      switch tree.getAttribute 'type'
+        when 'Axon' then @loadAxon tree
+        when 'Dendrite' then @loadDendrite tree
 
   # load dendrite data from a single tree[type=Dendrite] tag
   loadDendrite: (tag) ->
@@ -68,6 +66,10 @@ class NeurolucidaXML
       dendrite.total_spines++
 
     @_dendrites.push dendrite
+
+  #load axon data from single tree[type=Axon] tag
+  loadAxon: (tag) ->
+    # TODO: get axon informations from tree tag
 
   getDendrites: ->
     @_dendrites
