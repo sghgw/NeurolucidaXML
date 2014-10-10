@@ -12,7 +12,9 @@
     "type": "git",
     "url": "git://github.com/sghgw/NeurolucidaXML.git"
   },
-  "dependencies": {},
+  "dependencies": {
+    "xmldom": "^0.1.19"
+  },
   "devDependencies": {
     "matchdep": "~0.1.2",
     "grunt": "~0.4.1",
