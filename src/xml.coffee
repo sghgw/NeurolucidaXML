@@ -3,16 +3,25 @@ class NeurolucidaXML
     @_dendrites = []
   load: (xml) ->
     throw new Error('No XML found') if !xml
-    # load XML via DOMParser
-    if @xml = $($.parseXML(xml))
-      # load tree-nodes with type="Dendrite"
-      @loadDendrites @xml.find('tree[type=Dendrite]')
-
-      # TODO: load tree-nodes with type="Axon"
-      # TODO: load cell bodies
-      true
+    # get DOMParser and load XML
+    if typeof DOMParser is 'undefined'
+      parser = require('xmldom').DOMParser
+      @xml = new parser().parseFromString xml, 'text/xml'
     else
-      throw new Error('Incorrect XML: ' + xml)
+      parser = new DOMParser()
+      @xml = parser.parseFromString xml, 'text/xml'
+    
+    if @xml then true else throw new Error('Incorrect XML: ' + xml)
+    # load XML via DOMParser
+    # if @xml = $($.parseXML(xml))
+    #   # load tree-nodes with type="Dendrite"
+    #   @loadDendrites @xml.find('tree[type=Dendrite]')
+
+    #   # TODO: load tree-nodes with type="Axon"
+    #   # TODO: load cell bodies
+    #   true
+    # else
+    #   throw new Error('Incorrect XML: ' + xml)
 
   # load dendrite data from a collection of tree[type=Dendrite] tags
   loadDendrites: (tags) ->
