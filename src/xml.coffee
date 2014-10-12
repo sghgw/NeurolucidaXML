@@ -36,23 +36,31 @@ class NeurolucidaXML
       surface: 0
       volume: 0
       diameter: 0
+      segments: 0
       group: ''
       file: ''
       title: ''
     }
 
     # loop through all point tags and create a segment of dendrite between this point and the next one
-    for point in tag.children('point')
-      next = $(point).nextAll('point').first()
-      if next.length > 0
-        segment = new Segment(@_getCoordinates($(point)), @_getCoordinates(next)) 
-        dendrite.length += segment.getLength()
-        dendrite.volume += segment.getVolume()
-        dendrite.surface += segment.getSurface()
-        dendrite.diameter += segment.getDiameter()
+    for child, index in tag.children
+      switch child.nodeName
+        when 'point'
+          if (tag.childElementCount - 1) > index
+            next = child
+            while next
+              next = next.nextElementSibling
+              break if next.nodeName is 'point'
+            if next
+              segment = new Segment @_getCoords(child), @_getCoords(next)
+              dendrite.segments += 1
+              dendrite.length += segment.getLength()
+              dendrite.volume += segment.getVolume()
+              dendrite.surface += segment.getSurface()
+              dendrite.diameter += segment.getDiameter()
+        # when 'spine'
 
-
-    dendrite.diameter /= (tag.children('point').length - 1)
+    dendrite.diameter /= dendrite.segments
 
     # loop through all spine tags
     for spine in tag.children 'spine'
