@@ -12,7 +12,7 @@ class NeurolucidaXML
       @xml = parser.parseFromString xml, 'text/xml'
     
     if @xml
-      @loadTree()
+      @_loadTree()
       # TODO: load cell bodies
 
       true 
@@ -20,14 +20,14 @@ class NeurolucidaXML
       throw new Error('Incorrect XML: ' + xml)
 
   # load dendrite data from a collection of tree[type=Dendrite] tags
-  loadTree: ->
+  _loadTree: ->
     for tree in @xml.getElementsByTagName('tree')
       switch tree.getAttribute 'type'
-        when 'Axon' then @loadAxon tree
-        when 'Dendrite' then @loadDendrite tree
+        when 'Axon' then @_loadAxon tree
+        when 'Dendrite' then @_loadDendrite tree
 
   # load dendrite data from a single tree[type=Dendrite] tag
-  loadDendrite: (tag) ->
+  _loadDendrite: (tag) ->
     # create basic template for dendrite object
     dendrite = {
       spines: []
@@ -75,7 +75,7 @@ class NeurolucidaXML
     @_dendrites.push dendrite
 
   #load axon data from single tree[type=Axon] tag
-  loadAxon: (tag) ->
+  _loadAxon: (tag) ->
     # TODO: get axon informations from tree tag
 
   getDendrites: ->
