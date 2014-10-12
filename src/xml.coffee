@@ -42,7 +42,7 @@ class NeurolucidaXML
       title: ''
     }
 
-    # loop through all point tags and create a segment of dendrite between this point and the next one
+    # loop through all child tags of tree and create a segment of dendrite between this point and the next one or create a new spine
     for child, index in tag.children
       switch child.nodeName
         when 'point'
@@ -58,21 +58,20 @@ class NeurolucidaXML
               dendrite.volume += segment.getVolume()
               dendrite.surface += segment.getSurface()
               dendrite.diameter += segment.getDiameter()
-        # when 'spine'
+        when 'spine'
+          prev = child
+          while prev
+            prev = prev.previousElementSibling
+            break if prev.nodeName is 'point'
+          start = @_getCoords prev
+          end = @_getCoords child.getElementsByTagName('point')[0]
+          spine = new Segment start, end
+          dendrite.spines.push {
+            length: spine.getLength()
+          }
+          dendrite.total_spines++
 
     dendrite.diameter /= dendrite.segments
-
-    # loop through all spine tags
-    for spine in tag.children 'spine'
-      start = @_getCoordinates $(spine).prev('point')
-      end = @_getCoordinates $(spine).children('point').first()
-      spine = new Segment(start, end)
-      dendrite.spines.push {
-        length: spine.getLength()
-
-      }
-      dendrite.total_spines++
-
     @_dendrites.push dendrite
 
   #load axon data from single tree[type=Axon] tag
