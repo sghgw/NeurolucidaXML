@@ -83,12 +83,12 @@ class NeurolucidaXML
     @_dendrites
 
   # return x, y, z, d of point tag as array
-  _getCoordinates: (point) ->
+  _getCoords: (point) ->
     [
-      parseFloat(point.attr 'x'),
-      parseFloat(point.attr 'y'),
-      parseFloat(point.attr 'z'),
-      parseFloat(point.attr 'd')
+      parseFloat(point.getAttribute 'x'),
+      parseFloat(point.getAttribute 'y'),
+      parseFloat(point.getAttribute 'z'),
+      parseFloat(point.getAttribute 'd')
     ]
 
 root = exports ? window
