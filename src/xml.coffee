@@ -43,14 +43,14 @@ class NeurolucidaXML
     }
 
     # loop through all child tags of tree and create a segment of dendrite between this point and the next one or create a new spine
-    for child, index in tag.children
+    for child, index in tag.childNodes
       switch child.nodeName
         when 'point'
-          if (tag.childElementCount - 1) > index
+          if (tag.childNodes.length - 1) > index
             next = child
             while next
-              next = next.nextElementSibling
-              break if next.nodeName is 'point'
+              next = next.nextSibling
+              break if !next or next.nodeName is 'point'
             if next
               segment = new Segment @_getCoords(child), @_getCoords(next)
               dendrite.segments += 1
@@ -61,7 +61,7 @@ class NeurolucidaXML
         when 'spine'
           prev = child
           while prev
-            prev = prev.previousElementSibling
+            prev = prev.previousSibling
             break if prev.nodeName is 'point'
           start = @_getCoords prev
           end = @_getCoords child.getElementsByTagName('point')[0]
@@ -89,6 +89,13 @@ class NeurolucidaXML
       parseFloat(point.getAttribute 'z'),
       parseFloat(point.getAttribute 'd')
     ]
+
+  # returns next avaiable element of "nextElement"
+  _getNextElement: (element, nextElement) ->
+    while element
+      element = element.nextSibling
+      break if element.nodeName is nextElement
+    return element
 
 root = exports ? window
 root.NeurolucidaXML = NeurolucidaXML
