@@ -5,4 +5,4 @@ before_install:
   - npm install coffee-script
   - npm install mocha
 before_script:
-  coffee -c -o test
+  coffee -c -o test test
