@@ -1,7 +1,20 @@
 class NeurolucidaXML
   constructor: ->
     @_dendrites = []
+
+  # load xml and extract data
   load: (xml) ->
+    # TODO: call all methods to load and extract data
+    if @xml
+      @_loadTree()
+      # TODO: load cell bodies
+
+      true 
+    else
+      throw new Error('Incorrect XML: ' + xml)
+
+  # load XML as string and convert it into DOM object
+  loadXML: (xml) ->
     throw new Error('No XML found') if !xml
     # get DOMParser and load XML
     if typeof DOMParser is 'undefined'
@@ -11,13 +24,7 @@ class NeurolucidaXML
       parser = new DOMParser()
       @xml = parser.parseFromString xml, 'text/xml'
     
-    if @xml
-      @_loadTree()
-      # TODO: load cell bodies
-
-      true 
-    else
-      throw new Error('Incorrect XML: ' + xml)
+    if @xml then true else throw new Error('Incorrect XML: ' + xml)
 
   # load dendrite data from a collection of tree[type=Dendrite] tags
   _loadTree: ->
@@ -73,6 +80,7 @@ class NeurolucidaXML
 
     dendrite.diameter /= dendrite.segments
     @_dendrites.push dendrite
+    dendrite
 
   #load axon data from single tree[type=Axon] tag
   _loadAxon: (tag) ->
