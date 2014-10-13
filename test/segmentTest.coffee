@@ -2,7 +2,7 @@ chai = require 'chai'
 chai.should()
 expect = chai.expect
 
-{NeurolucidaXML, Segment} = require '../lib/neurolucida-xml'
+{Segment} = require '../lib/neurolucida-xml'
 
 describe 'Segment', ->
   segment = null

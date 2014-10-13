@@ -99,3 +99,4 @@ class NeurolucidaXML
 
 root = exports ? window
 root.NeurolucidaXML = NeurolucidaXML
+root.Segment = Segment
