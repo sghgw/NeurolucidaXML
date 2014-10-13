@@ -3,15 +3,16 @@ class NeurolucidaXML
     @_dendrites = []
 
   # load xml and extract data
-  load: (xml) ->
-    # TODO: call all methods to load and extract data
-    if @xml
-      @_loadTree()
-      # TODO: load cell bodies
+  # load: (xml) ->
+  #   # TODO: call all methods to load and extract data
+    
+  #   if @xml
+  #     @_loadTree()
+  #     # TODO: load cell bodies
 
-      true 
-    else
-      throw new Error('Incorrect XML: ' + xml)
+  #     true 
+  #   else
+  #     throw new Error('Incorrect XML: ' + xml)
 
   # load XML as string and convert it into DOM object
   loadXML: (xml) ->
@@ -28,6 +29,7 @@ class NeurolucidaXML
 
   # load dendrite data from a collection of tree[type=Dendrite] tags
   _loadTree: ->
+    throw new Error('@xml is empty') if !@xml
     for tree in @xml.getElementsByTagName('tree')
       switch tree.getAttribute 'type'
         when 'Axon' then @_loadAxon tree
