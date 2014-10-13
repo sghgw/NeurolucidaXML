@@ -33,7 +33,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "grunt"
+    "test": "grunt mochaTest"
   },
   "license": "GNU General Public License"
 }
