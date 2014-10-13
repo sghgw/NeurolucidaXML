@@ -3,6 +3,7 @@ node_js:
   - "0.10"
 before_install:
   - npm install coffee-script
+  - npm install grunt-cli
   - npm install mocha
 before_script:
   - coffee -c -o test test
