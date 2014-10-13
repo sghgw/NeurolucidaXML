@@ -1,6 +1,7 @@
 # NeurolucidaXML
 
 [![Build Status](https://travis-ci.org/sghgw/NeurolucidaXML.svg?branch=master)](https://travis-ci.org/sghgw/NeurolucidaXML)
+
 NeurolucidaXML will be a JavaScript library to parse data from Neurolucida XML files. I just start with this project, so it is far away from being complete.
 
 ## Installation
