@@ -6,4 +6,4 @@ before_install:
   - npm install mocha
 before_script:
   - coffee -c -o test test
-  - rm data.coffee segmentSpec.coffee xmlSpec.coffee
+  - rm test/data.coffee test/segmentSpec.coffee test/xmlSpec.coffee
