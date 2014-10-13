@@ -9,7 +9,7 @@ module.exports = (grunt) ->
     mochaTest:
       options:
         reporter: 'spec'
-      src: ['test/xmlTest.coffee', 'test/segmentTest.coffee']
+      src: ['test/xmlSpec.coffee', 'test/segmentSpec.coffee']
     watch: 
       coffee:
         files: ['src/*.coffee', 'test/*.coffee']
